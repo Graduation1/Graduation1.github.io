@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Graduation&#39;blog">
-    <meta name="description" content="建立博客用于督促个人学习，并且希望可以起到复习的作用">
+    <meta name="keywords" content="计算机系统基础(1), Graduation&#39;blog">
+    <meta name="description" content="计算机系统基础（1）冯诺依曼结构的主要思想：​       1.计算机最少应有 运算器 控制器 存储器 输入设备和输出设备 
+​       各组件功能：​        存储器 ： 存放数据和指令，二者在形式上没有区别，都是01序列。​ ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Graduation&#39;blog</title>
+    <title>计算机系统基础(1) | Graduation&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -259,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">计算机系统基础(1)</h1>
                 </div>
             </div>
         </div>
@@ -392,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-19
+                    2022-07-19
                 </div>
                 
 
@@ -401,14 +402,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    30
+                    873
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -426,7 +427,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>—<br>title: 404<br>date: 2022-1-19 18:43:10<br>type: “404”<br>layout: “404”<br>description: “芭比Q了～，我崩溃了！找不到你想要的页面了”<br>—</p>
+                <h1 id="计算机系统基础（1）"><a href="#计算机系统基础（1）" class="headerlink" title="计算机系统基础（1）"></a>计算机系统基础（1）</h1><h3 id="冯诺依曼结构的主要思想："><a href="#冯诺依曼结构的主要思想：" class="headerlink" title="冯诺依曼结构的主要思想："></a>冯诺依曼结构的主要思想：</h3><p>​       1.计算机最少应有 <strong>运算器 控制器 存储器 输入设备和输出设备</strong> </p>
+<p>​       各组件功能：<br>​        存储器 ： 存放数据和指令，二者在形式上没有区别，都是01序列。<br>​        控制器： 自动取出指令并执行<br>​        运算器：有基本的运算功能，逻辑运算和附加运算<br>​        输入和输出设备：完成操作者和计算机的通信<br>​        2.计算机采用<strong>存储程序</strong>的工作方式<br>​            任何计算机完成的工作应先被编写成程序，然后将程序和原始数据送入主存并启动执行<br>​        3.计算机工作的过程：<br>​            程序和数据先由输入设备输入至存储器，存储器将得到的程序中的指令和数据所在的地址逐条给到控制器，控制器执行命令，控制运算器从存储器中读取数据所在的地址，并进行运算，得到的结果仍交到存储器中，最后由存储器交到输出设备上，再由输出设备进行输出。<br>​             整个过程突出一个各司其职。</p>
+<h3 id="现代计算机结构"><a href="#现代计算机结构" class="headerlink" title="现代计算机结构"></a>现代计算机结构</h3><p>​        现代计算机和冯诺依曼结构基本相似，只是更加细分，引入寄存器的部件以方便功能的实现。<br>​        整个程序的执行过程就是控制器根据指令取数据，处理数据，放置数据，指令和数据都在存储器中。CPU必须在寄存器中加载数据才能执行。即<strong>首先根据PC从内存中获取指令对应地址的数据，然后将其保存在IR中，然后控制单元会对指令内容进行判断，并调用寄存器、ALU等执行指令内容，然后更新PC，使其指向下一个要执行的指令地址。</strong><br>​        抽象如下图  MAR和MDR看做是CPU和存储器通讯的硬件。<br><img src="/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/blog\source_posts\计算机系统基础-1\2.png"></p>
+<h3 id="程序的开发到执行"><a href="#程序的开发到执行" class="headerlink" title="程序的开发到执行"></a>程序的开发到执行</h3><p>​        计算机只认识0/1序列，所以要将高级语言编译或解释为机器语言才能执行。编译是一步步完成的，高级语言被预处理之后开始进行汇编语言的转化，最后变为机器语言，然后变成控制信号，这是表象。深层的是计算机通过自己的软件系统(语言处理系统和操作系统)将你的高级语言转化成0/1序列然后开始执行。</p>
+<h3 id="ISA"><a href="#ISA" class="headerlink" title="ISA"></a>ISA</h3><p>​        指令系统，规定了微体系结构中的各个指令，规定了软件对于硬件的控制的方式。</p>
+<h3 id="信息的二进制编码"><a href="#信息的二进制编码" class="headerlink" title="信息的二进制编码"></a>信息的二进制编码</h3><p>​        机器级的数据分为两大类，以有无数值为标志。以16比特为一个单位在内存中存储。<br>​        有数值的包括<strong>整数和浮点数，有正负之分</strong>，无数值的则是<strong>逻辑运算符或是字符</strong>，这些数据最终都是要变成0和1的。整个计算机中浮点数和定点数都是研究定点数的过程，浮点数可以转化成一个定点整数和一个顶点小数，定点整数确定小数点的位置。<br>​        定点数的表示方式有1.原码：方便理解，但是在运算和计算机使用的时候不方便，所以现在只有浮点数的尾数还在用。</p>
 
                 
             </div>
@@ -453,7 +459,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://graduation1.github.io/404.html">https://graduation1.github.io/404.html</a>
+                    <a href="https://graduation1.github.io/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/">https://graduation1.github.io/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -933,13 +939,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/404.html">
+                <a href="/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="计算机系统基础(1)">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">计算机系统基础(1)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -950,7 +956,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-19
                             </span>
                         <span class="publish-author">
                             
@@ -971,13 +977,13 @@
                 本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/404.html">
+                <a href="/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="计算机系统基础(1)">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">计算机系统基础(1)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -988,7 +994,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-19
                             </span>
                         <span class="publish-author">
                             
