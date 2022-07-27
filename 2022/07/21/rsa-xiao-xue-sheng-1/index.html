@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="RSA小学生(1), Graduation&#39;blog">
     <meta name="description" content="RSA小学生(1)​        这是我之前发现的一个网站，里面是一个大佬原创的一系列RSA基础题目。​        网址：http://162.14.73.60:18000/challenges
-RSA1：​        题目给出了">
+RSA1：普通题目​        题">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -402,14 +402,14 @@ RSA1：​        题目给出了">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    8 分
                 </div>
                 
 
@@ -428,8 +428,8 @@ RSA1：​        题目给出了">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="RSA小学生-1"><a href="#RSA小学生-1" class="headerlink" title="RSA小学生(1)"></a>RSA小学生(1)</h1><p>​        这是我之前发现的一个网站，里面是一个大佬原创的一系列RSA基础题目。<br>​        网址：<a target="_blank" rel="noopener" href="http://162.14.73.60:18000/challenges">http://162.14.73.60:18000/challenges</a></p>
-<h2 id="RSA1："><a href="#RSA1：" class="headerlink" title="RSA1："></a>RSA1：</h2><p>​        题目给出了出题的脚本，关键是e = 1，根据rsa的加密解密公式:m^e = c (mod n),可以得到这里的m = c,所以可以直接得到答案。</p>
-<h2 id="RSA2"><a href="#RSA2" class="headerlink" title="RSA2:"></a>RSA2:</h2><p>​        题目中还是e = 1,所以处理方式还是和上面的一样，但是结果却出了一堆乱码，所以说明了这次的m是大于n的，但是尝试爆破，很难爆破出来，所以有别的思路，用中国剩余定理可以得到m。<br>​        中国剩余定理的函数在python可以自己写.</p>
+<h4 id="RSA1：普通题目"><a href="#RSA1：普通题目" class="headerlink" title="RSA1：普通题目"></a>RSA1：普通题目</h4><p>​        题目给出了出题的脚本，关键是e = 1，根据rsa的加密解密公式:m^e = c (mod n),可以得到这里的m = c,所以可以直接得到答案。</p>
+<h4 id="RSA2-m-gt-n"><a href="#RSA2-m-gt-n" class="headerlink" title="RSA2: m > n"></a>RSA2: m &gt; n</h4><p>​        题目中还是e = 1,所以处理方式还是和上面的一样，但是结果却出了一堆乱码，所以说明了这次的m是大于n的，但是尝试爆破，很难爆破出来，所以有别的思路，用中国剩余定理可以得到m。<br>​        中国剩余定理的函数在python可以自己写.</p>
 <pre class="language-none"><code class="language-none">from functools import reduce
 def CRT(mi, ai):
     # mi,ai分别表示模数和取模后的值,都为列表结构
@@ -439,23 +439,23 @@ def CRT(mi, ai):
     ai_ti_Mi = [a * (M // m) * gmpy2.invert(M // m, m) for (m, a) in zip(mi, ai)]
     return reduce(lambda x, y: x + y, ai_ti_Mi) % M</code></pre>
 
-<h4 id="RSA3"><a href="#RSA3" class="headerlink" title="RSA3:"></a>RSA3:</h4><p>​        题目中给了两组公钥和密文，因为n两组n相等，所以首先判断是共模攻击，数学思想为：<br>$$<br>证明: m = c1^s1 *c2^s2%n<br>$$</p>
+<h4 id="RSA3-共模攻击"><a href="#RSA3-共模攻击" class="headerlink" title="RSA3: 共模攻击"></a>RSA3: 共模攻击</h4><p>​        题目中给了两组公钥和密文，因为n两组n相等，所以首先判断是共模攻击，数学思想为：<br>$$<br>证明: m = c1^s1 *c2^s2%n<br>$$</p>
 <p>$$<br>m = c^d (mod n)<br>$$</p>
 <p>$$<br>c1 = m^e1( mod n)<br>$$</p>
 <p>$$<br>c2 = m^e2( mod n)<br>$$</p>
 <p>$$<br>得：c1^s1 <em>c2^s2//n = [(m^e1)^s1//n</em>(m^e2)^s2//n]//n<br>$$</p>
 <p>$$<br>化简得: c1^s1 <em>c2^s2%n = [(m^e1)^s1</em>(m^e2)^s2]%n<br>                      = [(m^e1s1+e2s2]%n<br>                      = m%n<br>                      = m<br>$$</p>
 <p>​        s由拓展欧几里得得到，满足e1s1+e2s2 = gcd(e1,e2)</p>
-<h4 id="RSA4"><a href="#RSA4" class="headerlink" title="RSA4:"></a>RSA4:</h4><p>​        题目给了两个压缩包，格式都是.enc，所以在python中用open(,’rb’)read()将其打开解读，拿到了n,e,c尝试分解n，不成功，看到题目，尝试将c分解，成功了，所以c和n互换，开始解题，结果出错了，再看题，给错密钥了，尝试直接将d打印出来，成功了.</p>
+<h4 id="RSA4-enc文件"><a href="#RSA4-enc文件" class="headerlink" title="RSA4: .enc文件"></a>RSA4: .enc文件</h4><p>​        题目给了两个压缩包，格式都是.enc，所以在python中用open(,’rb’)read()将其打开解读，拿到了n,e,c尝试分解n，不成功，看到题目，尝试将c分解，成功了，所以c和n互换，开始解题，结果出错了，再看题，给错密钥了，尝试直接将d打印出来，成功了.</p>
 <h4 id="RSA5"><a href="#RSA5" class="headerlink" title="RSA5:"></a>RSA5:</h4><p>​        和第四题一样将文件解读出来，使用yafu将n分解，得到flag。</p>
-<h4 id="RSA6"><a href="#RSA6" class="headerlink" title="RSA6:"></a>RSA6:</h4><p>​        题目名称是听说过OEAP吗，这是一种对于密文的填充方式，需要新的函数解读。还是先想之前的一样，将文件打开，找到公钥，并用yafu将n分解得到p和q之后开始正常解题，结果果然还是不行，于是开始再次解读c。<br>​        引入</p>
+<h4 id="RSA6-OEAP填充的-enc文件"><a href="#RSA6-OEAP填充的-enc文件" class="headerlink" title="RSA6: OEAP填充的.enc文件"></a>RSA6: OEAP填充的.enc文件</h4><p>​        题目名称是听说过OEAP吗，这是一种对于密文的填充方式，需要新的函数解读。还是先想之前的一样，将文件打开，找到公钥，并用yafu将n分解得到p和q之后开始正常解题，结果果然还是不行，于是开始再次解读c。<br>​        引入</p>
 <pre class="language-none"><code class="language-none">import Crypto.Cipher.PKCS1_OAEP as OAEP
 key = RSA.construct((p*q,e,int(gmpy2.invert(e,phi))))
 rsa = OAEP.new(key)
 print(rsa.decrypt(c))</code></pre>
 
 <p>​        完成对于密文的解密。</p>
-<h4 id="RSA7："><a href="#RSA7：" class="headerlink" title="RSA7："></a>RSA7：</h4><p>​        题中很明显的一个特点是e很大，参考维纳攻击，可以完成爆破。<br>​        维纳攻击主要是依靠连分数和渐进分数，主要数学思想如下<br>$$<br>p和q是很大的素数，则(p-1)<em>(q-1)无限趋近于p</em>q.<br>$$</p>
+<h4 id="RSA7：维纳攻击"><a href="#RSA7：维纳攻击" class="headerlink" title="RSA7：维纳攻击"></a>RSA7：维纳攻击</h4><p>​        题中很明显的一个特点是e很大，参考维纳攻击，可以完成爆破。<br>​        维纳攻击主要是依靠连分数和渐进分数，主要数学思想如下<br>$$<br>p和q是很大的素数，则(p-1)<em>(q-1)无限趋近于p</em>q.<br>$$</p>
 <p>$$<br>ed = 1 (mod φ(n))<br>$$</p>
 <p>$$<br>ed = kφ(n) + 1,两边同时除以dφ(n)得到：<br>$$</p>
 <p>$$<br>e/φ(n) = k/d +1/dφ(n)<br>$$</p>
@@ -463,11 +463,21 @@ print(rsa.decrypt(c))</code></pre>
 <p>$$<br>所以k/d一定在是e/n的渐进分数之一,之后可以将d爆破出来<br>$$</p>
 <h4 id="RSA8"><a href="#RSA8" class="headerlink" title="RSA8:"></a>RSA8:</h4><p>​        奇怪的N？N怪在哪里，不知道，但还是先将其分解试试，明白了，N奇怪在不可分解，但这样就没有思路了，题目只给了n，e，c，所以我尝试将n直接当成q*1来使用，也就是说q = n,p = 1，最终解出答案。</p>
 <h4 id="RSA9："><a href="#RSA9：" class="headerlink" title="RSA9："></a>RSA9：</h4><p>​        说好了，摊牌了，所以我就直接试了试，结果除了一堆乱码，又想到他说的摊牌可能是直接将明文给出来了，所以我要找下c，结果确实，他摊牌了，啥都招了。</p>
-<h4 id="RSA10："><a href="#RSA10：" class="headerlink" title="RSA10："></a>RSA10：</h4><p>​        这道题给了两组数据，没有什么关联的，所以这道题应该是让我去找关联。尝试进行数学分析。先尝试直接求解，结果出了一堆乱码，再尝试使用中国剩余定理，结果还是一堆乱码，继续转变思路，尝试将两组数据当成一组处理，只是这样的话，可以得到除了明文和密文之外的所有数据，但需重新找到c，这里可以使用中国剩余定理，最终结出明文。</p>
-<h4 id="RSA11："><a href="#RSA11：" class="headerlink" title="RSA11："></a>RSA11：</h4><p>​        题目中e = 3，先想到爆破，最终爆破出答案。</p>
+<h4 id="RSA10：多组p-q-c"><a href="#RSA10：多组p-q-c" class="headerlink" title="RSA10：多组p,q,c"></a>RSA10：多组p,q,c</h4><p>​        这道题给了两组数据，没有什么关联的，所以这道题应该是让我去找关联。尝试进行数学分析。先尝试直接求解，结果出了一堆乱码，再尝试使用中国剩余定理，结果还是一堆乱码，继续转变思路，尝试将两组数据当成一组处理，只是这样的话，可以得到除了明文和密文之外的所有数据，但需重新找到c，这里可以使用中国剩余定理，最终结出明文。</p>
+<h4 id="RSA11：e很小"><a href="#RSA11：e很小" class="headerlink" title="RSA11：e很小"></a>RSA11：e很小</h4><p>​        题目中e = 3，先想到爆破，最终爆破出答案。</p>
 <h4 id="RSA12："><a href="#RSA12：" class="headerlink" title="RSA12："></a>RSA12：</h4><p>​        题目中给出中国剩余定理的提示，但又在问e是多少，所以这道题应该是要将e爆破出来的,题目给出了e的范围是（10，20），e为素数所以也很好爆破。</p>
-<h4 id="RSA13："><a href="#RSA13：" class="headerlink" title="RSA13："></a>RSA13：</h4><p>​        本题给了两组N和C也给了e，根据出题的脚本，两组N之间存在一个公因数p，可以现将p和q1，q2求出来，最终得到了两组数据，分别求解，c1和c2分别是flag的一半。</p>
-<h4 id="RSA14："><a href="#RSA14：" class="headerlink" title="RSA14："></a>RSA14：</h4><p>​        dp泄露，给出了e，解题的数学思想如下：<br>$$<br>dp = d (mod (p-1))<br>$$</p>
+<pre class="language-none"><code class="language-none">def CRT(mi, ai):
+    assert(reduce(gmpy2.gcd,mi)==1)
+    assert (isinstance(mi, list) and isinstance(ai, list))
+    M = reduce(lambda x, y: x * y, mi)
+    ai_ti_Mi = [a * (M // m) * gmpy2.invert(M // m, m) for (m, a) in zip(mi, ai)]
+    return reduce(lambda x, y: x + y, ai_ti_Mi) % M
+</code></pre>
+
+
+
+<h4 id="RSA13：两组N之间存在公因数p"><a href="#RSA13：两组N之间存在公因数p" class="headerlink" title="RSA13：两组N之间存在公因数p"></a>RSA13：两组N之间存在公因数p</h4><p>​        本题给了两组N和C也给了e，根据出题的脚本，两组N之间存在一个公因数p，可以现将p和q1，q2求出来，最终得到了两组数据，分别求解，c1和c2分别是flag的一半。</p>
+<h4 id="RSA14：dp泄露"><a href="#RSA14：dp泄露" class="headerlink" title="RSA14：dp泄露"></a>RSA14：dp泄露</h4><p>​        dp泄露，给出了e，解题的数学思想如下：<br>$$<br>dp = d (mod (p-1))<br>$$</p>
 <p>$$<br>edp = ed (mod(p-1))<br>$$</p>
 <p>$$<br>ed = 1 (modφ(n))<br>$$</p>
 <p>$$<br>ed = 1(mod(p-1))<br>$$</p>
@@ -477,7 +487,7 @@ print(rsa.decrypt(c))</code></pre>
 <p>$$<br>2^(edp-1) - 1 = tp<br>$$</p>
 <p>$$<br>所以2^(edp-1) - 1和n之间存在公因数p，p可以直接求出来。<br>$$</p>
 <p>​        也可以通过爆破k的方式来求解p，具体是edp&gt;k(p-1),dp&lt;p-1,e&gt;k.依靠函数libnum.prime_test()判断p是否为素数，来达到目的。</p>
-<h4 id="RSA15："><a href="#RSA15：" class="headerlink" title="RSA15："></a>RSA15：</h4><p>​        dp和dq泄露，都有但是没有e所以思路应该和上面拿到题有所区别，数学思路如下：<br>$$<br>m = c^d (mod n)<br>$$</p>
+<h4 id="RSA15：dp和dq同时泄露"><a href="#RSA15：dp和dq同时泄露" class="headerlink" title="RSA15：dp和dq同时泄露"></a>RSA15：dp和dq同时泄露</h4><p>​        dp和dq泄露，都有但是没有e所以思路应该和上面拿到题有所区别，数学思路如下：<br>$$<br>m = c^d (mod n)<br>$$</p>
 <p>$$<br>设mp = c^d(mod p),mq = c^d(modq)<br>$$</p>
 <p>$$<br>dp = d(mod(p-1),dq = d(mod(p-1)<br>$$</p>
 <p>$$<br>所以dp = d + k(p-1),dq = d + k(q-1)<br>$$</p>
@@ -490,13 +500,13 @@ print(rsa.decrypt(c))</code></pre>
 <p>$$<br>则c^d = mp + ((mq-mp)p^-1  (modq))<br>$$</p>
 <p>$$<br>m = mp + p*((mq-mp)p^-1  (modq))(mod n)<br>$$</p>
 <p>​        右边的数据全部已知，所以m就已知。</p>
-<h4 id="RSA16："><a href="#RSA16：" class="headerlink" title="RSA16："></a>RSA16：</h4><p>​        题目让分解n，那就先用yafu分解n试试，结果出了5个因数，但还是按常规思路去解题。结果却是乱码，再次仔细看题目，发现n分解的5个因数全部相等，那么n的欧拉函数的求解就要用别的方法了。<br>欧拉定理:<br>$$<br>1.当n为1时，φ(1)=1。因为1与任何数都构成互质关系<br>$$</p>
+<h4 id="RSA16：n为一个素数的x次方，欧拉函数的求法"><a href="#RSA16：n为一个素数的x次方，欧拉函数的求法" class="headerlink" title="RSA16：n为一个素数的x次方，欧拉函数的求法"></a>RSA16：n为一个素数的x次方，欧拉函数的求法</h4><p>​        题目让分解n，那就先用yafu分解n试试，结果出了5个因数，但还是按常规思路去解题。结果却是乱码，再次仔细看题目，发现n分解的5个因数全部相等，那么n的欧拉函数的求解就要用别的方法了。<br>欧拉定理:<br>$$<br>1.当n为1时，φ(1)=1。因为1与任何数都构成互质关系<br>$$</p>
 <p>$$<br>2.当n为质数时，φ(n)=n−1。因为质数与小于它的每一个数都互质。<br>$$</p>
 <p>$$<br>3.当n为质数的次方时n=p^k，则φ(n)=p^k−p^(k−1)=p^(k-1)*(p-1).<br>$$</p>
 <p>$$<br>4.当n为两个互质的数之积n=p⋅q, 则φ(n)=φ(p)φ⋅(q).<br>$$</p>
 <p>$$<br>5.任意一个大于1的正整数n，都可以写成一系列质数的积n=p^k1*p^k2⋯p^kr<br>$$</p>
 <h4 id="RSA17"><a href="#RSA17" class="headerlink" title="RSA17:"></a>RSA17:</h4><p>​        好像什么都说了，但尝试将q解出来后，发现q不是素数，将q分解后发现q可以分解成3个相等的因数，所以这道题又回到了φ(n)的求解上来了，明白了这些之后，flag就直接出来了。</p>
-<h4 id="RSA18："><a href="#RSA18：" class="headerlink" title="RSA18："></a>RSA18：</h4><p>​        题目有问题，什么问题？e好像不是素数，处理的方式和之前思想相同，m^e = c (mod n),将e分解至只剩质数如：k*e/k，之后将m^e =  m ^(ke/k),将m转换成M = m^k,题目变成求解M，最后将M开方求m。</p>
+<h4 id="RSA18：e不为素数"><a href="#RSA18：e不为素数" class="headerlink" title="RSA18：e不为素数"></a>RSA18：e不为素数</h4><p>​        题目有问题，什么问题？e好像不是素数，处理的方式和之前思想相同，m^e = c (mod n),将e分解至只剩质数如：k*e/k，之后将m^e =  m ^(ke/k),将m转换成M = m^k,题目变成求解M，最后将M开方求m。</p>
 <p>​        今天就到这里了，之后的题目提醒了有点难了，就明天再看吧，早点睡觉。</p>
 
                 
@@ -999,18 +1009,17 @@ print(rsa.decrypt(c))</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/07/21/rsa-xiao-xue-sheng-1/">
+                <a href="/2022/07/25/rsa-xiao-xue-sheng-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="RSA小学生(1)">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="RSA小学生-2">
                         
-                        <span class="card-title">RSA小学生(1)</span>
+                        <span class="card-title">RSA小学生-2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1020,9 +1029,9 @@ print(rsa.decrypt(c))</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-25
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1031,7 +1040,6 @@ print(rsa.decrypt(c))</code></pre>
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -1243,7 +1251,7 @@ print(rsa.decrypt(c))</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">2.7k</span>
+                        class="white-color">4.4k</span>
             
             
             

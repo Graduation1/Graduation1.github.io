@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="计算机系统基础(1), Graduation&#39;blog">
-    <meta name="description" content="计算机系统基础（1）冯诺依曼结构的主要思想：​       1.计算机最少应有 运算器 控制器 存储器 输入设备和输出设备 
-​       各组件功能：​        存储器 ： 存放数据和指令，二者在形式上没有区别，都是01序列。​ ">
+    <meta name="keywords" content="RSA小学生-2, Graduation&#39;blog">
+    <meta name="description" content="RSA小学生(1)RSA19：NC不互素​        打开文件文件发现只有n，c和e的数据，之后在看出题脚本，发现c=pow(m×p+n,e,n)，经过推导发现，整个c=pow(m×p,e,n),发现n无法通过yafu分解之后就没有思路">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>计算机系统基础(1) | Graduation&#39;blog</title>
+    <title>RSA小学生-2 | Graduation&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -260,12 +259,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">计算机系统基础(1)</h1>
+                    <h1 class="description center-align post-title">RSA小学生-2</h1>
                 </div>
             </div>
         </div>
@@ -393,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-19
+                    2022-07-25
                 </div>
                 
 
@@ -402,14 +401,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    873
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    6 分
                 </div>
                 
 
@@ -427,12 +426,69 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="计算机系统基础（1）"><a href="#计算机系统基础（1）" class="headerlink" title="计算机系统基础（1）"></a>计算机系统基础（1）</h1><h3 id="冯诺依曼结构的主要思想："><a href="#冯诺依曼结构的主要思想：" class="headerlink" title="冯诺依曼结构的主要思想："></a>冯诺依曼结构的主要思想：</h3><p>​       1.计算机最少应有 <strong>运算器 控制器 存储器 输入设备和输出设备</strong> </p>
-<p>​       各组件功能：<br>​        存储器 ： 存放数据和指令，二者在形式上没有区别，都是01序列。<br>​        控制器： 自动取出指令并执行<br>​        运算器：有基本的运算功能，逻辑运算和附加运算<br>​        输入和输出设备：完成操作者和计算机的通信<br>​        2.计算机采用<strong>存储程序</strong>的工作方式<br>​            任何计算机完成的工作应先被编写成程序，然后将程序和原始数据送入主存并启动执行<br>​        3.计算机工作的过程：<br>​            程序和数据先由输入设备输入至存储器，存储器将得到的程序中的指令和数据所在的地址逐条给到控制器，控制器执行命令，控制运算器从存储器中读取数据所在的地址，并进行运算，得到的结果仍交到存储器中，最后由存储器交到输出设备上，再由输出设备进行输出。<br>​             整个过程突出一个各司其职。</p>
-<h3 id="现代计算机结构"><a href="#现代计算机结构" class="headerlink" title="现代计算机结构"></a>现代计算机结构</h3><p>​        现代计算机和冯诺依曼结构基本相似，只是更加细分，引入寄存器的部件以方便功能的实现。<br>​        整个程序的执行过程就是控制器根据指令取数据，处理数据，放置数据，指令和数据都在存储器中。CPU必须在寄存器中加载数据才能执行。即<strong>首先根据PC从内存中获取指令对应地址的数据，然后将其保存在IR中，然后控制单元会对指令内容进行判断，并调用寄存器、ALU等执行指令内容，然后更新PC，使其指向下一个要执行的指令地址。</strong><br>​        抽象如下图  MAR和MDR看做是CPU和存储器通讯的硬件。<br><img src="/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/blog\source_posts\计算机系统基础-1\2.png"></p>
-<h3 id="程序的开发到执行"><a href="#程序的开发到执行" class="headerlink" title="程序的开发到执行"></a>程序的开发到执行</h3><p>​        计算机只认识0/1序列，所以要将高级语言编译或解释为机器语言才能执行。编译是一步步完成的，高级语言被预处理之后开始进行汇编语言的转化，最后变为机器语言，然后变成控制信号，这是表象。深层的是计算机通过自己的软件系统(语言处理系统和操作系统)将你的高级语言转化成0/1序列然后开始执行。</p>
-<h3 id="ISA"><a href="#ISA" class="headerlink" title="ISA"></a>ISA</h3><p>​        指令系统，规定了微体系结构中的各个指令，规定了软件对于硬件的控制的方式。</p>
-<h3 id="信息的二进制编码"><a href="#信息的二进制编码" class="headerlink" title="信息的二进制编码"></a>信息的二进制编码</h3><p>​        机器级的数据分为两大类，以有无数值为标志。以16比特为一个单位在内存中存储。<br>​        有数值的包括<strong>整数和浮点数，有正负之分</strong>，无数值的则是<strong>逻辑运算符或是字符</strong>，这些数据最终都是要变成0和1的。整个计算机中浮点数和定点数都是研究定点数的过程，浮点数可以转化成一个定点整数和一个顶点小数，定点整数确定小数点的位置。<br>​        定点数的表示方式有1.原码：方便理解，但是在运算和计算机使用的时候不方便，所以现在只有浮点数的尾数还在用。</p>
+                <h1 id="RSA小学生-1"><a href="#RSA小学生-1" class="headerlink" title="RSA小学生(1)"></a>RSA小学生(1)</h1><h4 id="RSA19：NC不互素"><a href="#RSA19：NC不互素" class="headerlink" title="RSA19：NC不互素"></a>RSA19：NC不互素</h4><p>​        打开文件文件发现只有n，c和e的数据，之后在看出题脚本，发现c=pow(m×p+n,e,n)，经过推导发现，整个c=pow(m×p,e,n),发现n无法通过yafu分解之后就没有思路了，通过题目的提示，我首先明白了，这道题目的NC是不互素的，所以可以先求NC的公因数，这样可以得到p和q，之后用常规思路开始求解。</p>
+<h4 id="RSA20：Rabin"><a href="#RSA20：Rabin" class="headerlink" title="RSA20：Rabin"></a>RSA20：Rabin</h4><p>​        打开txt文件，发现给的东西挺多的，但是无法运用常规思路求解，只能通过题目下方的提示来看题，进入提示之后发现这是一个新的算法————rabin算法,这是一种RSA的加密方式，它基于一种莫平方和模平方根的非对称加密算法。<br>​        主要的原理是：<br>$$<br>a = x^2 等价于x = √a<br>$$</p>
+<p>$$<br>a=x^2(modm)等价于x=√a(modm)或x = m-√a(modm)<br>$$</p>
+<p>​        加密方式：<br>​        在Rabin算法中默认e=2.所以加密的公式是:<br>$$<br>c = m^2(modn)<br>$$<br>​                其中c为密文，m为明文，n为公钥，n = pq，p，q为私钥，q和p为两个大素数，但满足<br>$$<br>p = q = 3 (mod4)即p和q都是3+4k的形式。<br>$$<br>解密过程的数学思路如下：<br>$$<br>c = m^e(modn)<br>$$</p>
+<p>$$<br>则：c = m^e(modp),c=m^e(modq)[e = 2]<br>$$</p>
+<p>c^(p-1)/2 = m^[(p-1)/2]<em>2=1(modp),代入上式得到c^(p+1)/2 = m^2(modp).<br>        开方得到：<br>$$<br>m1≡c</em>*(p+1)/4(modp)<br>$$</p>
+<p>$$<br>m2≡p-c**(p+1)/4(modp)<br>$$</p>
+<p>$$<br>m3≡c**(q+1)/4(modq)<br>$$</p>
+<p>$$<br>m4≡q-c**(q+1)/4(modq)<br>$$</p>
+<p>​    之后再利用辗转相除法得到yp和yq,使之满足：<br>$$<br>yp∗p+yq∗q=1<br>$$<br>​        这样的话就可以对上述的式子分成4组 (<em>m</em>1,<em>m</em>3),(<em>m</em>2,<em>m</em>3),(<em>m</em>1,<em>m</em>4),(<em>m</em>2,<em>m</em>4) 分别使用中国剩余定理求解，得到4个值，其中一个是明文。设a = yp×p,b = yq×q<br>$$<br>M1≡(a⋅m1+b⋅m3)(modn)<br>$$</p>
+<p>$$<br>M2≡(a⋅m1+b⋅m4)(modn)<br>$$</p>
+<p>$$<br>M3≡(a⋅m2+b⋅m3)(modn)<br>$$</p>
+<p>$$<br>M4≡(a⋅m2+b⋅m4)(modn)<br>$$</p>
+<h4 id="RSA24：PQ的逆元"><a href="#RSA24：PQ的逆元" class="headerlink" title="RSA24：PQ的逆元"></a>RSA24：PQ的逆元</h4><p>​        感觉会很难，题目给出了e，phi，还有PQ相互的逆元，之后开时进行数学推导。<br>$$ {p<em>p1^1 }<br>p</em>p1^1 = 1(modq),则p*p1^1 - 1 = k1q<br>$$</p>
+<p>$$<br>q<em>q1^1 = 1(modp),则q</em>q1^1 - 1 = k2p<br>$$</p>
+<p>$$<br>则两式相乘得到了：q<em>q1^1</em>p<em>p1^1-q</em>q1^1-p*p1^1 + 1 = k1k2qp<br>$$</p>
+<p>$$<br>则：q<em>q1^1+p</em>p1^1 - 1 = (q1^1*p1^1-k1k2)qp<br>$$</p>
+<p>$$<br>q<em>q1^1+p</em>q1^1 - 1 = kn<br>$$</p>
+<p>​        之后有了这个式子之后可以开始求解了，这个主要开始看q，p，n的位数来求解k的范围进行爆破，因为出题脚本已经告诉了p和q是1024bit了，所以n应该是2048bit，然后再看给的q1^1和q1^1分别都是1022bit和1024bit，所以上式的左边应该也是2048bit，这样的话k应该是&lt;2的，所以k = 1。<br>$$<br>φ(n) = (p-1)*(q-1) = pq-p-q+1<br>$$<br>​        这样的话可以用解方程的方式来解出p和q。<br>​        可以使用sympy库中的函数进行解方程。</p>
+<pre class="language-none"><code class="language-none">import sympy
+p, q = sympy.symbols('p q')					//对于未知数的初始化，将其转变为python可以解读的变量
+expr1 = pinv * p + qinv * q - 1 - p*q		//方程组式子1
+expr2 = (p-1)*(q-1) - phi					//方程组式子2
+r = sympy.solve([expr1,expr2],[p, q])		//求解方程</code></pre>
+
+<h4 id="RSA25-共模攻击变形-共模攻击-ec不共素"><a href="#RSA25-共模攻击变形-共模攻击-ec不共素" class="headerlink" title="RSA25:共模攻击变形(共模攻击+ec不共素)"></a>RSA25:共模攻击变形(共模攻击+ec不共素)</h4><p>​        题中和往常的共模攻击脚本一样，给了该给的数据，先重新使用共模攻击思路开始求解试试，结果确实乱码，所以我尝试转变思路，尝试分解n，结果n无法分解，之后再次转变思路，发现两个e好像不是素数，存在一个公共的因数，这里就可以联想到之前的ce不共素上了，可以直接解题试试，思路和共模攻击基本相同。</p>
+<h4 id="RSA26："><a href="#RSA26：" class="headerlink" title="RSA26："></a>RSA26：</h4><p>​        和上面的25题基本一致，补充一下上面的题目和本题的另一个重点，在共模攻击之后解出c1^s1+c2^s2之后，c1^s1+c2^s2实际上是M + k*n,所以之后的开根，要进行一次for循环，将k爆破。</p>
+<h4 id="RSA27：费马小定理"><a href="#RSA27：费马小定理" class="headerlink" title="RSA27：费马小定理"></a>RSA27：费马小定理</h4><p>​        看题目之后，明白了本题主要考察的是费马小定理，之后在研究出题脚本。，发现给了n，c，e还有hint，首先尝试分解n，失败之后，开始推导数学公式，推导过程如下：<br>$$<br>h = (2020^p+2021)^qmod(n)<br>$$</p>
+<p>$$<br>h = (2020⋅p)^q+(2020⋅p)^q−1⋅2021+⋯+2021^q+kpq<br>$$</p>
+<p>$$<br>h = 2021^q+kp,则h = 2021^q(modp)<br>$$</p>
+<p>​        之后可以介入费马小定理， a^p<em>≡</em>a*(mod<em>p</em>)<br>$$<br>h = 2021^q(modp)=(2021^q)^p (modp)<br>$$</p>
+<p>$$<br>h = 2021^n+kp<br>$$<br>​        由此可以将利用h-2021^n或2021^n-h(主要是看两者的大小比较)p求出来，另外2021^n太大，运算起来太麻烦，可以pow(2021,n,n)来代替。</p>
+<h4 id="RSA28-费马（2）"><a href="#RSA28-费马（2）" class="headerlink" title="RSA28:费马（2）"></a>RSA28:费马（2）</h4><p>​        本题和上面的题目也是大概一致，都是与公约数的求解有关，本题的思路是。<br>$$<br>hc = h +kp<br>$$</p>
+<h4 id="RSA29-数论"><a href="#RSA29-数论" class="headerlink" title="RSA29:数论"></a>RSA29:数论</h4><p>​            整个题目给出的数据有限，只能开始进行数学推导，推到完成后，我整理了一下，大概思路如下：<br>​            过程用键盘敲出来太麻烦了，我直接上草纸了：<br><img src="/2022/07/25/rsa-xiao-xue-sheng-2/blog\source_posts\RSA小学生-2\001.png"></p>
+<h4 id="RSA30：方程"><a href="#RSA30：方程" class="headerlink" title="RSA30：方程"></a>RSA30：方程</h4><p>​        很简单的方程解法，甚至不用方程就可以解出答案，唯一的问题是我自己代码敲得太不熟练了。</p>
+<h4 id="RSA31："><a href="#RSA31：" class="headerlink" title="RSA31："></a>RSA31：</h4><p>​        这题没什么难的，思路都很简单，只是第一次做的时候基本上是做不出来的，需要一定的经验，主要是最后的m要注意将其从十进制转字符，这个就只能作为一种经验了，得记好。</p>
+<pre class="language-none"><code class="language-none">
+import libnum
+def decipher_rsa(p,q,n,e,c):
+    """RSA 解密函数
+    """
+    phi = (p-1)*(q-1)
+    assert(libnum.gcd(e,phi) == 1)
+    d = libnum.invmod(e,phi)
+    m = pow(c, d, n)
+    print(m)
+    print(libnum.n2s(m))
+    return m
+m = decipher_rsa(p,q,n,e,c)
+i = 0
+s = str(m)
+flag = ""
+while i &lt; len(s):
+    if int(s[i:i+3]) &lt; 128:
+        flag += chr(int(s[i:i+3]))
+        i += 3
+    else:
+        flag += chr(int(s[i:i+2]))
+        i += 2
+print(flag)</code></pre>
+
+<h4 id="RSA32："><a href="#RSA32：" class="headerlink" title="RSA32："></a>RSA32：</h4><p>​        这道题挺简单的，思路也挺多的，主要是p和q是相邻的两个素数。</p>
+<h4 id="RSA34："><a href="#RSA34：" class="headerlink" title="RSA34："></a>RSA34：</h4><h4 id="RSA35"><a href="#RSA35" class="headerlink" title="RSA35:"></a>RSA35:</h4><p>​        C的算法就是中国剩余定理，可以直接解出来，n的话不能分解，但是p和q是相邻的素数。<br>明天应该就可以做完了，去刷别的平台了。</p>
 
                 
             </div>
@@ -459,7 +515,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://graduation1.github.io/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/">https://graduation1.github.io/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/</a>
+                    <a href="https://graduation1.github.io/2022/07/25/rsa-xiao-xue-sheng-2/">https://graduation1.github.io/2022/07/25/rsa-xiao-xue-sheng-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -934,54 +990,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/07/19/ji-suan-ji-xi-tong-ji-chu-2/">
+                <a href="/2022/07/25/rsa-xiao-xue-sheng-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="计算机系统基础(2)">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="RSA小学生-2">
                         
-                        <span class="card-title">计算机系统基础(2)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-19
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Graduation
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="计算机系统基础(1)">
-                        
-                        <span class="card-title">计算机系统基础(1)</span>
+                        <span class="card-title">RSA小学生-2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -992,7 +1012,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-25
                             </span>
                         <span class="publish-author">
                             
@@ -1003,6 +1023,43 @@
                     </div>
                 </div>
 
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/21/rsa-xiao-xue-sheng-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="RSA小学生(1)">
+                        
+                        <span class="card-title">RSA小学生(1)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Graduation
+                            
+                        </span>
+                    </div>
+                </div>
                 
             </div>
         </div>
