@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="RSA小学生-2, Graduation&#39;blog">
-    <meta name="description" content="RSA小学生(1)RSA19：NC不互素​        打开文件文件发现只有n，c和e的数据，之后在看出题脚本，发现c=pow(m×p+n,e,n)，经过推导发现，整个c=pow(m×p,e,n),发现n无法通过yafu分解之后就没有思路">
+    <meta name="description" content="RSA小学生(2)RSA19：NC不互素​        打开文件文件发现只有n，c和e的数据，之后在看出题脚本，发现c=pow(m×p+n,e,n)，经过推导发现，整个c=pow(m×p,e,n),发现n无法通过yafu分解之后就没有思路">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -426,7 +426,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="RSA小学生-1"><a href="#RSA小学生-1" class="headerlink" title="RSA小学生(1)"></a>RSA小学生(1)</h1><h4 id="RSA19：NC不互素"><a href="#RSA19：NC不互素" class="headerlink" title="RSA19：NC不互素"></a>RSA19：NC不互素</h4><p>​        打开文件文件发现只有n，c和e的数据，之后在看出题脚本，发现c=pow(m×p+n,e,n)，经过推导发现，整个c=pow(m×p,e,n),发现n无法通过yafu分解之后就没有思路了，通过题目的提示，我首先明白了，这道题目的NC是不互素的，所以可以先求NC的公因数，这样可以得到p和q，之后用常规思路开始求解。</p>
+                <h1 id="RSA小学生-2"><a href="#RSA小学生-2" class="headerlink" title="RSA小学生(2)"></a>RSA小学生(2)</h1><h4 id="RSA19：NC不互素"><a href="#RSA19：NC不互素" class="headerlink" title="RSA19：NC不互素"></a>RSA19：NC不互素</h4><p>​        打开文件文件发现只有n，c和e的数据，之后在看出题脚本，发现c=pow(m×p+n,e,n)，经过推导发现，整个c=pow(m×p,e,n),发现n无法通过yafu分解之后就没有思路了，通过题目的提示，我首先明白了，这道题目的NC是不互素的，所以可以先求NC的公因数，这样可以得到p和q，之后用常规思路开始求解。</p>
 <h4 id="RSA20：Rabin"><a href="#RSA20：Rabin" class="headerlink" title="RSA20：Rabin"></a>RSA20：Rabin</h4><p>​        打开txt文件，发现给的东西挺多的，但是无法运用常规思路求解，只能通过题目下方的提示来看题，进入提示之后发现这是一个新的算法————rabin算法,这是一种RSA的加密方式，它基于一种莫平方和模平方根的非对称加密算法。<br>​        主要的原理是：<br>$$<br>a = x^2 等价于x = √a<br>$$</p>
 <p>$$<br>a=x^2(modm)等价于x=√a(modm)或x = m-√a(modm)<br>$$</p>
 <p>​        加密方式：<br>​        在Rabin算法中默认e=2.所以加密的公式是:<br>$$<br>c = m^2(modn)<br>$$<br>​                其中c为密文，m为明文，n为公钥，n = pq，p，q为私钥，q和p为两个大素数，但满足<br>$$<br>p = q = 3 (mod4)即p和q都是3+4k的形式。<br>$$<br>解密过程的数学思路如下：<br>$$<br>c = m^e(modn)<br>$$</p>
@@ -459,7 +459,7 @@ r = sympy.solve([expr1,expr2],[p, q])		//求解方程</code></pre>
 <p>​        之后可以介入费马小定理， a^p<em>≡</em>a*(mod<em>p</em>)<br>$$<br>h = 2021^q(modp)=(2021^q)^p (modp)<br>$$</p>
 <p>$$<br>h = 2021^n+kp<br>$$<br>​        由此可以将利用h-2021^n或2021^n-h(主要是看两者的大小比较)p求出来，另外2021^n太大，运算起来太麻烦，可以pow(2021,n,n)来代替。</p>
 <h4 id="RSA28-费马（2）"><a href="#RSA28-费马（2）" class="headerlink" title="RSA28:费马（2）"></a>RSA28:费马（2）</h4><p>​        本题和上面的题目也是大概一致，都是与公约数的求解有关，本题的思路是。<br>$$<br>hc = h +kp<br>$$</p>
-<h4 id="RSA29-数论"><a href="#RSA29-数论" class="headerlink" title="RSA29:数论"></a>RSA29:数论</h4><p>​            整个题目给出的数据有限，只能开始进行数学推导，推到完成后，我整理了一下，大概思路如下：<br>​            过程用键盘敲出来太麻烦了，我直接上草纸了：<br><img src="/2022/07/25/rsa-xiao-xue-sheng-2/blog\source_posts\RSA小学生-2\001.png"></p>
+<h4 id="RSA29-数论"><a href="#RSA29-数论" class="headerlink" title="RSA29:数论"></a>RSA29:数论</h4><p>​            整个题目给出的数据有限，只能开始进行数学推导，推到完成后，我整理了一下，大概思路如下：<br>​            过程用键盘敲出来太麻烦了，我直接上草纸了：<br><img src="/2022/07/25/rsa-xiao-xue-sheng-2/001.png"></p>
 <h4 id="RSA30：方程"><a href="#RSA30：方程" class="headerlink" title="RSA30：方程"></a>RSA30：方程</h4><p>​        很简单的方程解法，甚至不用方程就可以解出答案，唯一的问题是我自己代码敲得太不熟练了。</p>
 <h4 id="RSA31："><a href="#RSA31：" class="headerlink" title="RSA31："></a>RSA31：</h4><p>​        这题没什么难的，思路都很简单，只是第一次做的时候基本上是做不出来的，需要一定的经验，主要是最后的m要注意将其从十进制转字符，这个就只能作为一种经验了，得记好。</p>
 <pre class="language-none"><code class="language-none">
@@ -990,18 +990,17 @@ print(flag)</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/07/25/rsa-xiao-xue-sheng-2/">
+                <a href="/2022/07/28/rsa-xiao-xue-sheng-3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="RSA小学生-2">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="RSA小学生-3">
                         
-                        <span class="card-title">RSA小学生-2</span>
+                        <span class="card-title">RSA小学生-3</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1011,9 +1010,9 @@ print(flag)</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-28
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1022,7 +1021,6 @@ print(flag)</code></pre>
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -1234,7 +1232,7 @@ print(flag)</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.4k</span>
+                        class="white-color">5k</span>
             
             
             
