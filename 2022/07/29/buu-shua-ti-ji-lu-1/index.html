@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="计算机系统基础(2), Graduation&#39;blog">
-    <meta name="description" content="计算机系统基础(2)浮点数​        计算机中表示浮点数，
-">
+    <meta name="keywords" content="buu刷题记录(1), Graduation&#39;blog">
+    <meta name="description" content="buu刷题记录(1)​        buu平台我之前刷过一段时间，今天重新捡起来开始继续刷。
+1.密码学的心声（进制转换）​        本题中给了一张乐谱，但重点是歌词部分，已经提醒的很多了，这个谱子是八进制的，所以要转十进制，然后再">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>计算机系统基础(2) | Graduation&#39;blog</title>
+    <title>buu刷题记录(1) | Graduation&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -260,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">计算机系统基础(2)</h1>
+                    <h1 class="description center-align post-title">buu刷题记录(1)</h1>
                 </div>
             </div>
         </div>
@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-19
+                    2022-07-29
                 </div>
                 
 
@@ -402,14 +402,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    20
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -427,7 +427,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="计算机系统基础-2"><a href="#计算机系统基础-2" class="headerlink" title="计算机系统基础(2)"></a>计算机系统基础(2)</h1><h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>​        计算机中表示浮点数，</p>
+                <h1 id="buu刷题记录-1"><a href="#buu刷题记录-1" class="headerlink" title="buu刷题记录(1)"></a>buu刷题记录(1)</h1><p>​        buu平台我之前刷过一段时间，今天重新捡起来开始继续刷。</p>
+<h4 id="1-密码学的心声（进制转换）"><a href="#1-密码学的心声（进制转换）" class="headerlink" title="1.密码学的心声（进制转换）"></a>1.密码学的心声（进制转换）</h4><p>​        本题中给了一张乐谱，但重点是歌词部分，已经提醒的很多了，这个谱子是八进制的，所以要转十进制，然后再对照ascii码得出flag，但需要注意的是ascii码最多到三位数，最大对应数字是127，所以在转十进制之后，数字最大不能大于127，所以再开始的时候要对乐谱进行处理，以三个数为一组进行处理。</p>
+<pre class="language-none"><code class="language-none">a = [111, 114, 157, 166, 145, 123, 145, 143, 165, 162, 151, 164, 171, 126, 145, 162, 171, 115, 165, 143, 150]
+b = ''
+for i in a:
+    i = str(i)									//初始化数字
+    b += chr(int(i, 8))							//八进制转十进制，再转ascii码
+
+print(b)
+</code></pre>
+
+<h4 id="2-GUET-CTF2019-BabyRSA"><a href="#2-GUET-CTF2019-BabyRSA" class="headerlink" title="2.[GUET-CTF2019]BabyRSA"></a>2.[GUET-CTF2019]BabyRSA</h4><p>​        最简单的rsa题目，出了明文，能给的都给了。</p>
+<h4 id="3-robomunication"><a href="#3-robomunication" class="headerlink" title="3.robomunication"></a>3.robomunication</h4><p>​        给了一个.mp3文件，我没有用别的工具，我是直接听的，一共47s，就两个音节所以也很好写出来，摩斯密码分为：…. . .-.. .-.. — .– …. .- - .. … - …. . -.- . -.– .. - .. … -… — — .–. -… . . .–.，直接解码就行了</p>
+<h4 id="4-BJDCTF2020-这是base"><a href="#4-BJDCTF2020-这是base" class="headerlink" title="4.[BJDCTF2020]这是base??"></a>4.[BJDCTF2020]这是base??</h4><p>​            给了字典，给了密文，先将密文用字典解析，之后将解析出来的一串数字，将这串数字对照base64列表，用base64解码就可以了。</p>
+<h4 id="5-rsa2"><a href="#5-rsa2" class="headerlink" title="5.rsa2:"></a>5.rsa2:</h4><p>​        给的文件里面e太大了，首先应该想到维纳攻击，这样将d解出来，再根据flag的生成条件，有了d就可以生成flag了。<br>​        但存在问题是，我python库中hashlib安装不了，当时也没想着赶紧修，就先去看了答案，结果答案跟我的思路一致，我将d解出来之后就去看答案了。</p>
+<h4 id="6-RSA5："><a href="#6-RSA5：" class="headerlink" title="6.RSA5："></a>6.RSA5：</h4><p>​        本题打开文件，给了很多组的nc，但应该用不了这么多,我首先用中国剩余定理的思路只用前3组的nc开始解题，得出的答案尝试开根得flag，结果不行，开根之后只能得到m = 1，所以思路转变到通过求最大公约数的方式，将一组p和q求出来，开始遍历尝试。结果遍历完成只有n5和n18存在公约数，这样的话题目就简单了起来。</p>
+<h4 id="7-达芬奇密码："><a href="#7-达芬奇密码：" class="headerlink" title="7.达芬奇密码："></a>7.达芬奇密码：</h4><p>​        没有什么思路，去找大佬的wp看看，捕捉到一个关键词，斐波那契数列，这样的话剩下的就自己做吧。<br>​        先去到网上找斐波那契数列的前32个数，将它们和给出的文件的前一个数进行比较，发现这好像是一次移位的加密，思路是：先将第一行的32个数和斐波那契数列的前32个数进行移位比较，之后再将这个移位比较的应用到给出的第二组的32位，结果却不对，但我感觉整体思路应该没问题的，还是移位是关键，所以这次我尝试的是将第二行的32位数字也进行和第一行数字的移位处理。</p>
+<h4 id="8-rot"><a href="#8-rot" class="headerlink" title="8.rot"></a>8.rot</h4><p>这边先来看看rot加密是什么。</p>
+<p><strong>ROT5</strong>：只对数字进行编码，用当前数字往前数的第5个数字替换当前数字，例如当前为0，编码后变成5，当前为1，编码后变成6，以此类推顺序循环。<br>      <strong>ROT13</strong>：只对字母进行编码，用当前字母往前数的第13个字母替换当前字母，例如当前为A，编码后变成N，当前为B，编码后变成O，以此类推顺序循环。<br>      <strong>ROT18</strong>：这是一个异类，本来没有，它是将ROT5和ROT13组合在一起，为了好称呼，将其命名为ROT18。<br>      <strong>ROT47</strong>：对数字、字母、常用符号进行编码，按照它们的ASCII值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符，例如当前为小写字母z，编码后变成大写字母K，当前为数字0，编码后变成符号_。用于ROT47编码的字符其ASCII值范围是33－126</p>
 
                 
             </div>
@@ -454,7 +472,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://graduation1.github.io/2022/07/19/ji-suan-ji-xi-tong-ji-chu-2/">https://graduation1.github.io/2022/07/19/ji-suan-ji-xi-tong-ji-chu-2/</a>
+                    <a href="https://graduation1.github.io/2022/07/29/buu-shua-ti-ji-lu-1/">https://graduation1.github.io/2022/07/29/buu-shua-ti-ji-lu-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -929,54 +947,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/07/21/rsa-xiao-xue-sheng-1/">
+                <a href="/2022/07/29/buu-shua-ti-ji-lu-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="RSA小学生(1)">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="buu刷题记录(1)">
                         
-                        <span class="card-title">RSA小学生(1)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Graduation
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/07/19/ji-suan-ji-xi-tong-ji-chu-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="计算机系统基础(1)">
-                        
-                        <span class="card-title">计算机系统基础(1)</span>
+                        <span class="card-title">buu刷题记录(1)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -987,7 +969,45 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Graduation
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/28/rsa-xiao-xue-sheng-3/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="RSA小学生-3">
+                        
+                        <span class="card-title">RSA小学生-3</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-28
                             </span>
                         <span class="publish-author">
                             
